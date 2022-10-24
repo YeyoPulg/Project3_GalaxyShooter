@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static UnityEngine.ParticleSystem;
 
 public class Player : MonoBehaviour
@@ -73,7 +75,9 @@ public class Player : MonoBehaviour
             //enemyController.PlayerIsdead();
             playerSprite.enabled = false;
             //particles.Play();
-            this.gameObject.SetActive(false);
+            Destroy(gameObject);
+            //this.gameObject.SetActive(false);
+            SceneManager.LoadScene(0);
         }
     }
 }

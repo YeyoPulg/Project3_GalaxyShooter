@@ -1039,7 +1039,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   velocidad: 5
   laser: {fileID: 936928709163221067, guid: 40611ee358a8cef4e8a3b9fdb89c0521, type: 3}
-  playerLife: 5
+  playerLife: 3
 --- !u!50 &2042213777
 Rigidbody2D:
   serializedVersion: 4

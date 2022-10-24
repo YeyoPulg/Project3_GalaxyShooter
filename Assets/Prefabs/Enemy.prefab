@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 873710371492973690}
   - component: {fileID: 873710371492973691}
   - component: {fileID: 873710371492973684}
+  - component: {fileID: 3127813329879509030}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: enemy
@@ -148,6 +149,21 @@ MonoBehaviour:
   vida: 2
   efectoMuerte: {fileID: 0}
   velocidad: 3
+--- !u!114 &3127813329879509030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 873710371492973685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abefaa70a2fccdc4e8cd67f0e3d2734d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ControladorDisparo: {fileID: 8069587587197168608}
+  bala: {fileID: 4002673888889367529, guid: cad1064b7b119de408a54cc68522e23a, type: 3}
+  spawntime: 1
 --- !u!1 &4257644230683340305
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,7 +173,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8069587587197168608}
-  - component: {fileID: 8706484642056282890}
   m_Layer: 0
   m_Name: ShooterEnemy
   m_TagString: Untagged
@@ -179,18 +194,3 @@ Transform:
   m_Father: {fileID: 873710371492973688}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8706484642056282890
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4257644230683340305}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abefaa70a2fccdc4e8cd67f0e3d2734d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ControladorDisparo: {fileID: 0}
-  bala: {fileID: 4002673888889367529, guid: cad1064b7b119de408a54cc68522e23a, type: 3}
-  spawntime: 2.5

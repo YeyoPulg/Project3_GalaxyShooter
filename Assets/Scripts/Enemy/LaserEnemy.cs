@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class LaserEnemy : MonoBehaviour
 {
-    [SerializeField] private float velocidad;
+    private float velocidad = 10;
     [SerializeField] private float daño;
+
     private void Update()
     {
-
-
         transform.Translate(Vector2.down * velocidad * Time.deltaTime);
-
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("nave"))
         {
-            other.GetComponent<Enemy>().TomarDaño(daño);
+            Player playerController = other.gameObject.GetComponent<Player>();
+            playerController.Hurt(1);
+            //other.GetComponent<Enemy>().TomarDaño(daño);
             Destroy(gameObject);
         }
     }

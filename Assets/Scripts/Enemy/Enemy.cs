@@ -6,7 +6,7 @@ public class Enemy : MonoBehaviour
 {
 
     [SerializeField] private float vida;
-    [SerializeField] private GameObject efectoMuerte;
+    //[SerializeField] private GameObject efectoMuerte;
 
     public float velocidad = 5;
 
@@ -21,33 +21,36 @@ public class Enemy : MonoBehaviour
         transform.position += Vector3.down * velocidad * Time.deltaTime; //DIRRECCIÓN DONDE SE MUEVE EL OBSTACULO
     }
 
-    public void TomarDaño(float daño)
-    {
-        vida -= daño;
+    //public void TomarDaño(float daño)
+    //{
+    //    vida -= daño;
 
-        if (vida <= 0)
-        {
-            Muerte();
-        }
-    }
+    //    if (vida <= 0)
+    //    {
+    //        Destroy(gameObject);
+    //        //Muerte();
+    //    }
+    //}
 
-    private void Muerte()
-    {
-        Instantiate(efectoMuerte, transform.position, Quaternion.identity);
-        Destroy(gameObject);
-    }
+    //private void Muerte()
+    //{
+    //    Instantiate(efectoMuerte, transform.position, Quaternion.identity);
+    //    Destroy(gameObject);
+    //}
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "laser")
         {
-            this.gameObject.SetActive(false);
+            Destroy(gameObject);
+            //this.gameObject.SetActive(false);
         }
         if (other.tag == "nave")
         {
             Player playerController = other.gameObject.GetComponent<Player>();
             playerController.Hurt(2);
-            this.gameObject.SetActive(false);
+            Destroy(gameObject);
+            //this.gameObject.SetActive(false);
         }
     }
 }

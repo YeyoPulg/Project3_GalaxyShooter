@@ -21,11 +21,13 @@ public class AsteroidR : MonoBehaviour
     {
         if (other.tag == "nave")
         {
-            Destroy(this.gameObject);
+            Player playerController = other.gameObject.GetComponent<Player>();
+            playerController.Hurt(1);
+            Destroy(gameObject);
         }
         if (other.tag == "laser")
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 }
