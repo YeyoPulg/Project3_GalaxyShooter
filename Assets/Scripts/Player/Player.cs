@@ -10,28 +10,34 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float velocidad;
 
-    private Vector2 movimiento;
+    //private Vector2 movimiento;
     public GameObject laser;
     private Shooter shooter;
     private bool isAlive;
-    //private EnemyController enemyController;
     private SpriteRenderer playerSprite;
     [SerializeField] private int playerLife;
+    private AudioSource disparo;
 
-
+    public Scena scena;
     private Rigidbody2D rb;
+    public GameObject[] life;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         shooter = GetComponentInChildren<Shooter>();
-        //enemyController = FindObjectOfType<EnemyController>();
         playerSprite = GetComponent<SpriteRenderer>();
+        disparo= GetComponent<AudioSource>();
     }
 
     private void Start()
     {
+        life[0].SetActive(true);
+        life[1].SetActive(false);
+        life[2].SetActive(false);
+        life[3].SetActive(false);
         isAlive = true;
+        playerLife = life.Length;
     }
     private void Update()
     {
@@ -40,8 +46,8 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
+        
         PlayerMovement();
-        //rb.MovePosition(rb.position + movimiento * velocidad * Time.fixedDeltaTime);
     }
 
     private void PlayerMovement()
@@ -60,24 +66,33 @@ public class Player : MonoBehaviour
         {
             //playerSound.Play();
             shooter.Shooting();
+            disparo.Play();
         }
     }
 
     public void Hurt(int hurt)
     {
         playerLife -= hurt;
-        //UIController.instance.SetLife(playerLife);
 
         if (playerLife <= 0)
         {
+            Destroy(life[2]);
+            life[3].SetActive(true);
             isAlive = false;
-            //UIController.instance.EndGameText("Game Over!");
-            //enemyController.PlayerIsdead();
             playerSprite.enabled = false;
-            //particles.Play();
             Destroy(gameObject);
             //this.gameObject.SetActive(false);
-            SceneManager.LoadScene(0);
+            scena.Perder();
+        }
+        else if (playerLife == 2)
+        {
+            Destroy(life[0]);
+            life[1].SetActive(true);
+        }
+        else if (playerLife == 1)
+        {
+            Destroy(life[1]);
+            life[2].SetActive(true);
         }
     }
 }

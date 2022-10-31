@@ -8,7 +8,12 @@ public class ShooterEnemy : MonoBehaviour
     [SerializeField] private GameObject bala;
     [SerializeField] private float spawntime = 2.5f;
     private float timeElapsed;
+    private AudioSource disparo;
 
+    private void Awake()
+    {
+        disparo = GetComponent<AudioSource>();
+    }
 
     private void Update()
     {
@@ -17,6 +22,7 @@ public class ShooterEnemy : MonoBehaviour
         if (timeElapsed > spawntime)
         {
             Disparar();
+            disparo.Play();
         }
     }
 
@@ -26,24 +32,4 @@ public class ShooterEnemy : MonoBehaviour
         Instantiate(bala, ControladorDisparo.position, ControladorDisparo.rotation);
     }
 }
-    
-//[SerializeField] float speed;
-    //private bool isDestroyed;
-
-
-    //private void OnEnable()
-    //{
-    //    isDestroyed = false;
-    //    StartCoroutine(Shooting());
-    //}
-
-    //IEnumerator Shooting()
-    //{
-    //    float time = Random.Range(0.5f, 2.5f);
-    //    yield return new WaitForSeconds(time);
-    //    if (isDestroyed == false)
-    //    {
-    //        Instantiate(Resources.Load("LaserEnemy"), transform.position, Quaternion.identity);
-    //    }
-    //}
 
