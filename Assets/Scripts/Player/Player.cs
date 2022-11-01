@@ -3,24 +3,22 @@ using System.Collections.Generic;
 using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static UnityEngine.ParticleSystem;
 
 public class Player : MonoBehaviour
 {
     [SerializeField]
     private float velocidad;
-
-    //private Vector2 movimiento;
     public GameObject laser;
     private Shooter shooter;
     private bool isAlive;
     private SpriteRenderer playerSprite;
     [SerializeField] private int playerLife;
-    private AudioSource disparo;
 
+    private AudioSource disparo;
     public Scena scena;
     private Rigidbody2D rb;
     public GameObject[] life;
+    //public GameObject explosion;
 
     private void Awake()
     {
